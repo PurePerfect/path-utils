@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -27,6 +27,13 @@ import com.pureperfect.pathutils.PathResolver;
 import com.pureperfect.pathutils.PathUtils;
 import com.pureperfect.pathutils.URLResolver;
 
+/**
+ * Common tests for {@link URLResolver}.
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class Common_URLResolverTest extends Common_Base
 {
 	@Test

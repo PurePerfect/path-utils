@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -21,6 +21,13 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+/**
+ * Common tests for the {@link ClasspathResolver}
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class Common_ClasspathResolverTest extends Common_Base
 {
 	@Test

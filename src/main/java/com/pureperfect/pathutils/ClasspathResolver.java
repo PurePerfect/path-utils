@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -46,7 +46,7 @@ class ClasspathResolver extends PathResolver
 		String normalizePath = ClasspathUtils.normalizeToDir(this.parentFile)
 				.toString();
 
-		InputStream in = ClasspathUtils.fromClassPath(normalizePath);
+		InputStream in = ClasspathUtils.open(normalizePath);
 
 		BufferedReader r = new BufferedReader(new InputStreamReader(in));
 
@@ -77,7 +77,7 @@ class ClasspathResolver extends PathResolver
 
 		String result = ClasspathUtils.processNavigation(targetPath).toString();
 
-		if (ClasspathUtils.fromClassPath(result) != null)
+		if (ClasspathUtils.open(result) != null)
 			return result;
 
 		throw new PathResolutionException(path);

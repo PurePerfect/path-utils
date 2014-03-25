@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -29,8 +29,8 @@ import java.util.zip.ZipInputStream;
  * Resolves relative and absolute paths.
  * 
  * @author J. Chris Folsom
- * @version 0.1
- * @since 0.1
+ * @version 0.2
+ * @since 0.2
  */
 public abstract class PathResolver
 {
@@ -195,7 +195,7 @@ public abstract class PathResolver
 		}
 		else if (resolve instanceof String)
 		{
-			return ClasspathUtils.fromClassPath((String) resolve);
+			return ClasspathUtils.open((String) resolve);
 		}
 		else if (resolve instanceof URL)
 		{

@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -22,12 +22,28 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/**
+ * Represents an entry in an archive.
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class ArchiveEntry
 {
 	private byte[] zipData;
 
 	private String path;
 
+	/**
+	 * Create a new archive entry.
+	 * 
+	 * @param path
+	 *            the path of the entry
+	 * 
+	 * @param zipData
+	 *            the bytes of the archive (i.e. not the entry in the archive).
+	 */
 	public ArchiveEntry(String path, byte[] zipData)
 	{
 		super();
@@ -35,27 +51,34 @@ public class ArchiveEntry
 		this.path = path;
 	}
 
+	/**
+	 * The archive bytes.
+	 * 
+	 * @return The archive bytes.
+	 */
 	public byte[] getZipData()
 	{
 		return zipData;
 	}
 
-	public void setZipData(byte[] zipData)
-	{
-		this.zipData = zipData;
-	}
-
+	/**
+	 * The path of the entry.
+	 * 
+	 * @return The path of the entry.
+	 */
 	public String getPath()
 	{
 		return path;
 	}
 
-	public void setPath(String path)
-	{
-		this.path = path;
-	}
-
-	public InputStream open()
+	/**
+	 * Open a stream to the archive entry.
+	 * 
+	 * @return an InputStream
+	 * @throws PathResolutionException
+	 *             if the entry does not exist in the archive.
+	 */
+	public InputStream open() throws PathResolutionException
 	{
 		ZipInputStream zipIn = new ZipInputStream(new ByteArrayInputStream(
 				this.zipData));

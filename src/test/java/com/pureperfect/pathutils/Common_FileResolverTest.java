@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -27,6 +27,13 @@ import com.pureperfect.pathutils.FileResolver;
 import com.pureperfect.pathutils.PathResolver;
 import com.pureperfect.pathutils.PathUtils;
 
+/**
+ * Common tests for the {@link FileResolver}
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class Common_FileResolverTest extends Common_Base
 {
 	@Test

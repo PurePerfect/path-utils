@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -17,17 +17,46 @@ package com.pureperfect.pathutils;
 
 import java.io.InputStream;
 
+/**
+ * Various operations for working with classpath references.
+ * 
+ * TODO RELEASE
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class ClasspathUtils
 {
-	public static InputStream fromClassPath(String classpath)
+	private ClasspathUtils()
+	{
+		// static methods only
+	}
+	
+	/**
+	 * Open a resource on the classpath as a stream.
+	 * 
+	 * @param classpath
+	 *            the stream to open
+	 * 
+	 * @return the stream or null if the path does not exist
+	 */
+	public static InputStream open(String classpath)
 	{
 		return Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream(classpath);
 	}
 
-	public static boolean isDirectory(String path)
+	/**
+	 * Whether or not it ends with '/'.
+	 * 
+	 * @param classpath
+	 *            the classpath to test
+	 * @return Whether or not it ends with '/'.
+	 */
+	public static boolean isDirectory(String classpath)
 	{
-		return path.endsWith("/");
+		return classpath.endsWith("/");
 	}
 
 	/**
@@ -39,6 +68,10 @@ public class ClasspathUtils
 	 * Else: remove trailing file so that we have the directory name:
 	 * 
 	 * 'myfolder/myfile.txt becomes 'myfolder/'.
+	 * 
+	 * @param path
+	 *            the path to normalize
+	 * @return the normalized path
 	 */
 	public static StringBuilder normalizeToDir(CharSequence path)
 	{
@@ -61,12 +94,33 @@ public class ClasspathUtils
 		return results;
 	}
 
+	/**
+	 * Equivalent to calling:
+	 * 
+	 * <ol>
+	 * <li>{@link #removeSameDirReferences(CharSequence)}</li>
+	 * <li>{@link #processUpDirectories(CharSequence)}</li>
+	 * <li>{@link #removeLeadingSlash(CharSequence)}</li>
+	 * </ol>
+	 * 
+	 * @param path
+	 *            the path to process
+	 * @return the processed path
+	 */
 	public static StringBuilder processNavigation(CharSequence path)
 	{
 		return ClasspathUtils
 				.removeLeadingSlash(processUpDirectories(removeSameDirReferences(path)));
 	}
 
+	/**
+	 * Process all instances of "../" in the given path so that "parent/dir/../"
+	 * simply becomes "parent/".
+	 * 
+	 * @param path
+	 *            the path to process
+	 * @return the processed path
+	 */
 	public static StringBuilder processUpDirectories(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
@@ -120,6 +174,13 @@ public class ClasspathUtils
 		return results;
 	}
 
+	/**
+	 * Remove the leading '/' if it exists.
+	 * 
+	 * @param path
+	 *            the path to modify
+	 * @return the modified path
+	 */
 	public static StringBuilder removeLeadingSlash(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
@@ -130,6 +191,14 @@ public class ClasspathUtils
 		return results;
 	}
 
+	/**
+	 * Remove all instances of "./" since they only reference the directory we
+	 * are already in.
+	 * 
+	 * @param path
+	 *            the path to modify
+	 * @return the modified path
+	 */
 	public static StringBuilder removeSameDirReferences(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
@@ -151,6 +220,15 @@ public class ClasspathUtils
 		return results;
 	}
 
+	/**
+	 * Trim the path to the last file on the path. E.g: "my/path" simply becomes
+	 * "path"
+	 * 
+	 * @param path
+	 *            the path to trim
+	 * 
+	 * @return the trimmed path
+	 */
 	public static String trimToFile(String path)
 	{
 		int last = path.lastIndexOf('/');

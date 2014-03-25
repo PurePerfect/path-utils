@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -23,6 +23,11 @@ import java.net.URL;
 
 import org.junit.Test;
 
+/**
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class PathResolverTest
 {
 	@Test

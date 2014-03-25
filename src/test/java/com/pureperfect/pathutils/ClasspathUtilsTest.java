@@ -1,5 +1,5 @@
 /*
- * Copyright [2008] PurePerfect.com Licensed under the Apache License, Version
+ * Copyright [2013] PurePerfect.com Licensed under the Apache License, Version
  * 2.0 (the "License"); you may not use this file except in compliance with the
  * License.
  * 
@@ -23,15 +23,21 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author J. Chris Folsom
+ * @version 0.2
+ * @since 0.2
+ */
 public class ClasspathUtilsTest
 {
 	@Test
 	public void fromClassPath()
 	{
 		assertNotNull(ClasspathUtils
-				.fromClassPath("test/internal/path/resolver/file3.txt"));
+				.open("test/internal/path/resolver/file3.txt"));
 		assertNull(ClasspathUtils
-				.fromClassPath("/test/internal/path/resolver/file3.txt"));
+				.open("/test/internal/path/resolver/file3.txt"));
 	}
 
 	@Test

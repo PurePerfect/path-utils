@@ -45,7 +45,7 @@ public class Common_FileResolverTest extends Common_Base
 
 		super.underTest = PathResolver.createFor(new File(path));
 
-		assertEquals("src/test/resources/test/internal/path/resolver/file",
+		assertEquals("src/test/resources/test/internal/path/resolver/file/",
 				super.underTest.getPath());
 	}
 

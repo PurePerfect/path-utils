@@ -31,6 +31,11 @@ class FileResolver extends PathResolver
 	@Override
 	public String getPath()
 	{
+		if (this.parent.isDirectory())
+		{
+			return this.parent.toString() + File.separator;
+		}
+
 		return this.parent.toString();
 	}
 

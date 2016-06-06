@@ -4,7 +4,7 @@
 
 	<groupId>com.pureperfect</groupId>
 	<artifactId>pureperfect-pathutils</artifactId>
-	<version>0.2</version>
+	<version>0.3</version>
 	<packaging>jar</packaging>
 
 	<licenses>

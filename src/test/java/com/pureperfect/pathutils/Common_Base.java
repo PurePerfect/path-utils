@@ -15,7 +15,10 @@
  */
 package com.pureperfect.pathutils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -59,6 +63,8 @@ public abstract class Common_Base
 
 		assertEquals(2, results.size());
 
+		Collections.sort(results);
+		
 		assertEquals("file1.txt", results.get(0));
 
 		assertEquals("file2.txt", results.get(1));
@@ -70,6 +76,8 @@ public abstract class Common_Base
 
 		assertEquals(2, results.size());
 
+		Collections.sort(results);
+		
 		assertEquals("file1.txt", results.get(0));
 
 		assertEquals("file2.txt", results.get(1));

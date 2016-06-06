@@ -41,7 +41,7 @@ public class PathResolverTest
 	@Test
 	public void testCreateForFileJar()
 	{
-		String path = PathUtils.osFriendly("src/test/resources/test1.jar");
+		String path = PathUtils.osFriendly("src/test/resources/file.jar");
 
 		assertTrue(PathResolver.createFor(new File(path)) instanceof ZipResolver);
 	}
@@ -49,7 +49,7 @@ public class PathResolverTest
 	@Test
 	public void testCreateForFileZip()
 	{
-		String path = PathUtils.osFriendly("src/test/resources/test1.zip");
+		String path = PathUtils.osFriendly("src/test/resources/file.zip");
 
 		assertTrue(PathResolver.createFor(new File(path)) instanceof ZipResolver);
 	}
@@ -77,7 +77,7 @@ public class PathResolverTest
 	@Test
 	public void testCreateForURLJar() throws MalformedURLException
 	{
-		String path = PathUtils.osFriendly("src/test/resources/test1.jar");
+		String path = PathUtils.osFriendly("src/test/resources/file.jar");
 
 		assertTrue(PathResolver.createFor(new File(path).toURI().toURL()) instanceof ZipResolver);
 	}
@@ -85,7 +85,7 @@ public class PathResolverTest
 	@Test
 	public void testCreateForURLZip() throws MalformedURLException
 	{
-		String path = PathUtils.osFriendly("src/test/resources/test1.zip");
+		String path = PathUtils.osFriendly("src/test/resources/file.zip");
 
 		assertTrue(PathResolver.createFor(new File(path).toURI().toURL()) instanceof ZipResolver);
 	}

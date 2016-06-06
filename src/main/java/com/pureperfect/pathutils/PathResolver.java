@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
-import java.util.zip.ZipInputStream;
 
 /**
  * Resolves relative and absolute paths.
@@ -45,9 +44,20 @@ public abstract class PathResolver
 	 * @return a {@link PathResolver} that resolves paths relative to the entry
 	 *         in the zip file.
 	 */
-	public static PathResolver createFor(String path, ZipInputStream zip)
+	public static PathResolver createFor(String path, InputStream zip)
 	{
 		return new ZipResolver(path, zip);
+	}
+
+	/**
+	 * 
+	 * @param entry
+	 *            the archive entry to use
+	 * @return
+	 */
+	public static PathResolver createFor(ArchiveEntry entry)
+	{
+		return new ZipResolver(entry);
 	}
 
 	/**
@@ -65,7 +75,7 @@ public abstract class PathResolver
 		{
 			try
 			{
-				return createFor("", new ZipInputStream(new FileInputStream(f)));
+				return createFor("", new FileInputStream(f));
 			}
 			catch (FileNotFoundException e)
 			{
@@ -109,7 +119,7 @@ public abstract class PathResolver
 		{
 			try
 			{
-				return createFor("", new ZipInputStream(url.openStream()));
+				return createFor("", url.openStream());
 			}
 			catch (IOException e)
 			{

@@ -36,7 +36,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void getPath() throws Exception
 	{
 		PathResolver resolver = new ZipResolver("child",
-				ClasspathUtils.open("file.jar"));
+				PathUtils.open("file.jar"));
 
 		assertEquals("child", resolver.getPath());
 	}
@@ -60,7 +60,7 @@ public class Common_ZipResolverTest extends Common_Base
 	{
 		super.underTest = new ZipResolver(
 				"test/internal/path/resolver/file/child",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -72,7 +72,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void getSubFilesMultiple() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -85,7 +85,7 @@ public class Common_ZipResolverTest extends Common_Base
 	{
 		super.underTest = new ZipResolver(
 				"test/internal/path/resolver/file/child/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -97,7 +97,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void openStreamDownDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.openStreamDownDir();
@@ -109,7 +109,7 @@ public class Common_ZipResolverTest extends Common_Base
 	{
 		super.underTest = new ZipResolver(
 				"test/internal/path/resolver/file/file1.txt",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -121,7 +121,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void openStreamInDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -133,7 +133,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void openStreamMissing() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.openStreamMissing();
@@ -144,7 +144,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void openStreamUpDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.openStreamUpDir();
@@ -155,7 +155,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void resolveDownDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.expectedResultType = ArchiveEntry.class;
@@ -168,7 +168,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void resolveFileInSameDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.expectedResultType = ArchiveEntry.class;
@@ -194,7 +194,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void resolveInDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.expectedResultType = ArchiveEntry.class;
@@ -207,7 +207,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void resolveMissing() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 
@@ -231,7 +231,7 @@ public class Common_ZipResolverTest extends Common_Base
 	public void resolveUpDir() throws Exception
 	{
 		super.underTest = new ZipResolver("test/internal/path/resolver/file/",
-				ClasspathUtils.open("all.jar"));
+				PathUtils.open("all.jar"));
 
 		super.expectedResolverType = ZipResolver.class;
 		super.expectedResultType = ArchiveEntry.class;

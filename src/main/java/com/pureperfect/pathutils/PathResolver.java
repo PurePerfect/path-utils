@@ -205,7 +205,7 @@ public abstract class PathResolver
 		}
 		else if (resolve instanceof String)
 		{
-			return ClasspathUtils.open((String) resolve);
+			return PathUtils.open((String) resolve);
 		}
 		else if (resolve instanceof URL)
 		{

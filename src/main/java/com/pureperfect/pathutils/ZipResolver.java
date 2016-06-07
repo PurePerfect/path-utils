@@ -67,11 +67,11 @@ class ZipResolver extends PathResolver
 	{
 		StringBuilder temp = new StringBuilder(parent);
 
-		temp = ClasspathUtils.normalizeToDir(temp);
+		temp = PathUtils.normalizeToDir(temp);
 
 		temp.append(regexMatch);
 
-		String targetPath = ClasspathUtils.processNavigation(temp).toString();
+		String targetPath = PathUtils.processNavigation(temp).toString();
 
 		ZipInputStream zipIn = new ZipInputStream(new ByteArrayInputStream(
 				this.zipFile));
@@ -85,7 +85,7 @@ class ZipResolver extends PathResolver
 			{
 				if (Pattern.matches(targetPath, current.getName()))
 				{
-					results.add(ClasspathUtils.trimToFile(current.getName()));
+					results.add(PathUtils.trimToFile(current.getName()));
 				}
 			}
 
@@ -107,11 +107,11 @@ class ZipResolver extends PathResolver
 
 		StringBuilder temp = new StringBuilder(parent);
 
-		temp = ClasspathUtils.normalizeToDir(temp);
+		temp = PathUtils.normalizeToDir(temp);
 
 		temp.append(path);
 
-		String targetPath = ClasspathUtils.processNavigation(temp).toString();
+		String targetPath = PathUtils.processNavigation(temp).toString();
 
 		ZipInputStream zipIn = new ZipInputStream(new ByteArrayInputStream(
 				this.zipFile));

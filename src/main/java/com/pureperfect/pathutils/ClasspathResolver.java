@@ -43,10 +43,10 @@ class ClasspathResolver extends PathResolver
 	{
 		List<String> results = new LinkedList<String>();
 
-		String normalizePath = ClasspathUtils.normalizeToDir(this.parentFile)
+		String normalizePath = PathUtils.normalizeToDir(this.parentFile)
 				.toString();
 
-		InputStream in = ClasspathUtils.open(normalizePath);
+		InputStream in = PathUtils.open(normalizePath);
 
 		BufferedReader r = new BufferedReader(new InputStreamReader(in));
 
@@ -71,13 +71,13 @@ class ClasspathResolver extends PathResolver
 
 		StringBuilder targetPath = new StringBuilder(parentFile);
 
-		targetPath = ClasspathUtils.normalizeToDir(targetPath);
+		targetPath = PathUtils.normalizeToDir(targetPath);
 
 		targetPath.append(path);
 
-		String result = ClasspathUtils.processNavigation(targetPath).toString();
+		String result = PathUtils.processNavigation(targetPath).toString();
 
-		if (ClasspathUtils.open(result) != null)
+		if (PathUtils.open(result) != null)
 			return result;
 
 		throw new PathResolutionException(path);

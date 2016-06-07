@@ -53,7 +53,7 @@ public abstract class PathResolver
 	 * 
 	 * @param entry
 	 *            the archive entry to use
-	 * @return
+	 * @return a path resolver to the zip entry.
 	 */
 	public static PathResolver createFor(ArchiveEntry entry)
 	{
@@ -176,9 +176,9 @@ public abstract class PathResolver
 	 *            the regular expression to use.
 	 * @return the list of paths that matched the regular expression
 	 * @throws IOException
+	 *             if it occurs.
 	 */
-	public abstract List<String> getSubfiles(String regexMatch)
-			throws IOException;
+	public abstract List<String> getSubfiles(String regexMatch) throws IOException;
 
 	/**
 	 * Calls {@link #resolve(String)} and then opens the returned resource as a

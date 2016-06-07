@@ -43,6 +43,7 @@ public class PathUtils
 	 *            the stream to read
 	 * @return the bytes in the stream
 	 * @throws IOException
+	 *             if there is an error reading from the stream.
 	 */
 	public static byte[] toBytes(InputStream in) throws IOException
 	{
@@ -121,8 +122,7 @@ public class PathUtils
 	 */
 	public static InputStream open(String classpath)
 	{
-		return Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream(classpath);
+		return Thread.currentThread().getContextClassLoader().getResourceAsStream(classpath);
 	}
 
 	/**
@@ -154,11 +154,11 @@ public class PathUtils
 	public static StringBuilder normalizeToDir(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
-	
+
 		if (!isClasspathDirectory(results.toString()))
 		{
 			int lastDir = results.lastIndexOf("/");
-	
+
 			if (lastDir < 0)
 			{
 				results = new StringBuilder("/");
@@ -168,7 +168,7 @@ public class PathUtils
 				results.replace(lastDir, path.length(), "/");
 			}
 		}
-	
+
 		return results;
 	}
 
@@ -187,8 +187,7 @@ public class PathUtils
 	 */
 	public static StringBuilder processNavigation(CharSequence path)
 	{
-		return PathUtils
-				.removeLeadingSlash(PathUtils.processUpDirectories(PathUtils.removeSameDirReferences(path)));
+		return PathUtils.removeLeadingSlash(PathUtils.processUpDirectories(PathUtils.removeSameDirReferences(path)));
 	}
 
 	/**
@@ -201,10 +200,10 @@ public class PathUtils
 	public static StringBuilder removeLeadingSlash(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
-	
+
 		if (results.charAt(0) == '/')
 			results.replace(0, 1, "");
-	
+
 		return results;
 	}
 
@@ -219,7 +218,7 @@ public class PathUtils
 	public static StringBuilder removeSameDirReferences(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
-	
+
 		for (int i = 0; i < results.length() - 1; ++i)
 		{
 			if (results.charAt(i) == '.' && results.charAt(i + 1) == '/')
@@ -227,13 +226,13 @@ public class PathUtils
 				if (i == 0 || results.charAt(i - 1) != '.')
 				{
 					results.replace(i, i + 2, "");
-	
+
 					// Backup place to account for what we removed
 					i = i - 1;
 				}
 			}
 		}
-	
+
 		return results;
 	}
 
@@ -249,10 +248,10 @@ public class PathUtils
 	public static String trimToFile(String path)
 	{
 		int last = path.lastIndexOf('/');
-	
+
 		if (!path.endsWith("/") && last > -1 && last < path.length())
 			return path.substring(last + 1);
-	
+
 		return path;
 	}
 
@@ -267,17 +266,16 @@ public class PathUtils
 	public static StringBuilder processUpDirectories(CharSequence path)
 	{
 		StringBuilder results = new StringBuilder(path);
-	
+
 		/*
 		 * Need to resolve ../ in path by eliminating previous directory from
 		 * string.
 		 */
-		for (int upDirIndex = results.indexOf("../"); upDirIndex >= 0; upDirIndex = results
-				.indexOf("../"))
+		for (int upDirIndex = results.indexOf("../"); upDirIndex >= 0; upDirIndex = results.indexOf("../"))
 		{
 			// First trim off the ../ we found
 			results.replace(upDirIndex, upDirIndex + 3, "");
-	
+
 			if (upDirIndex > 2)
 			{
 				/*
@@ -286,7 +284,7 @@ public class PathUtils
 				 * "foo/" will become "foo"
 				 */
 				results.replace(upDirIndex - 1, upDirIndex, "");
-	
+
 				/*
 				 * Now go back to the previous slash and remove the previous
 				 * directory
@@ -313,7 +311,7 @@ public class PathUtils
 				}
 			}
 		}
-	
+
 		return results;
 	}
 }

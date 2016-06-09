@@ -356,4 +356,19 @@ public class PathUtilsTest
 		assertEquals("/", PathUtils.trimToFile("/"));
 		assertEquals("foo/", PathUtils.trimToFile("foo/"));
 	}
+	
+	@Test
+	public void isEmpty()
+	{
+		assertFalse(PathUtils.isEmpty("asdf"));
+		assertTrue(PathUtils.isEmpty(null));
+		assertTrue(PathUtils.isEmpty("             "));
+		assertTrue(PathUtils.isEmpty(""));
+	}
+	
+	@Test
+	public void packageToClassPath()
+	{
+		assertEquals("com/pureperfect/pathutils/", PathUtils.packageToClassPath(this.getClass().getPackage()));
+	}
 }

@@ -314,4 +314,10 @@ public class PathUtils
 
 		return results;
 	}
+	
+	//TESTME in path utils
+	public static final String packageToClassPath(String packageName)
+	{
+		return packageName == null ? "" : packageName.replace(".", "/") + "/";
+	}
 }
